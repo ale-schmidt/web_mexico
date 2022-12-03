@@ -4007,12 +4007,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var RequestService = /** @class */ (function () {
-    //private url_base = "http://localhost:80/WEB_MEXICO/Mexico-WebAPI/" // para probar aca
-    // private url_base = "http://187.188.141.119:80/WEB_MEXICO/Mexico-WebAPI/"
     // private url_base = "http://187.188.141.119:80/WEB_MEXICO/Mexico-WebAPI/"
     function RequestService(http) {
         this.http = http;
-        this.url_base = window.location.origin + "/WEB_MEXICO/Mexico-WebAPI/"; // Para prod
+        //private url_base = window.location.origin + "/WEB_MEXICO/Mexico-WebAPI/" // Para prod
+        //private url_base = "http://localhost:80/WEB_MEXICO/Mexico-WebAPI/" // para probar aca
+        this.url_base = "http://187.188.141.119:80/WEB_MEXICO/Mexico-WebAPI/";
         if (window.location.origin.indexOf('applusrtv') >= 0) {
             this.url_base = window.location.origin + "/Ecuador_WEB/Ecuador-WebAPI/";
             //this.url_base = window.location.origin + "/WEB_ECUADOR/Ecuador-WebAPI/" // Para la 85
