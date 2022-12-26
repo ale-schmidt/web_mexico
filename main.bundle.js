@@ -1429,11 +1429,11 @@ var EncuestaComponent = /** @class */ (function () {
         }
         // //Valido la fecha 
         // if(this.respuestaEncuesta.fechaRTV == null){
-        //   this.mensajes.push({severity:"error", summary:"Fecha de RTV", detail:"Debe seleccionar una fecha de RTV"})
+        //   this.mensajes.push({severity:"error", summary:"Fecha de RTV", detail:"Debe seleccionar una fecha de verificación"})
         // }
         //Valido la planta 
         if (this.respuestaEncuesta.planta == null || this.respuestaEncuesta.planta == "-1") {
-            this.mensajes.push({ severity: "error", summary: "Centro de  verificación", detail: "Debe seleccionar el centro de  verificación donde asistió" });
+            this.mensajes.push({ severity: "error", summary: "Centro de  verificación", detail: "Debe seleccionar el centro de verificación donde asistió" });
         }
         //Si no se cargaron mensajes de error muestro el siguiente slide
         if (this.mensajes.length == 0) {
@@ -1469,6 +1469,11 @@ var EncuestaComponent = /** @class */ (function () {
     /** Envía la encuesta para guardarla */
     EncuestaComponent.prototype.enviarEncuesta = function () {
         var _this = this;
+        if (this.respuestaEncuesta.fechaRTV == null) {
+            var today = new Date();
+            this.todayDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            this.respuestaEncuesta.fechaRTV = this.todayDate.toString();
+        }
         this.mensajes = new Array();
         if (this.respuestaEncuesta.respuestas.length < this.encuestaService.encuesta.secciones[0].preguntas.length) {
             this.mensajes.push({ severity: "error", summary: "Preguntas", detail: "Se deben responder todas las preguntas antes de enviar la encuesta" });
